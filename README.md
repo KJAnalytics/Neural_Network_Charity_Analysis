@@ -27,34 +27,61 @@ Modeling is executed utilizing the TensorFlow library for Python and the Keras M
 
 ### Initial Model - AlphabetSoupCharity_New
 
-For the first phase of the modeling inputs included:
+For the first phase of the modeling process included:
   - 2 hidden labyers utilizing ReLU activation with 80 and 30 notes respectively.  
   - Output layer executed with sigmoid activation as the Target is binary.
-  
-      _________________________________________________________________
-Layer (type)                 Output Shape              Param #   
+  - 25,724 samples with 43 features.
+  - Epochs 100
+
+
+ Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
 =================================================================
-dense_6 (Dense)              (None, 80)                3520      
-_________________________________________________________________
-dense_7 (Dense)              (None, 30)                2430      
-_________________________________________________________________
-dense_8 (Dense)              (None, 1)                 31        
+ dense (Dense)               (None, 80)                3520      
+                                                                 
+ dense_1 (Dense)             (None, 30)                2430      
+                                                                 
+ dense_2 (Dense)             (None, 1)                 31        
+                                                                 
 =================================================================
 Total params: 5,981
 Trainable params: 5,981
+Non-trainable params: 0 
 
+Compilation was eecuted with binary_crossentrophy and adam optimizer with the output metric "Accuracy". Checkpoints were created using tensorflow.keras.callbacks ModelCheckpoints with 100 epochs utilized.  Final model output is saved as: https://github.com/KJAnalytics/Neural_Network_Charity_Analysis/blob/main/AlphabetSoupCharity.h5 
 
+### Optimized Model - AlphabetSoupCharity_Optimization
+
+For the optimization phase of the modeling process included:
+  
+  - The addition of a third hidden layer with nodes of 80,30,10 respectively.
+  - Epochs increased to 100=.
+     Model: "sequential_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense_3 (Dense)             (None, 80)                703200    
+                                                                 
+ dense_4 (Dense)             (None, 30)                2430      
+                                                                 
+ dense_5 (Dense)             (None, 10)                310       
+                                                                 
+ dense_6 (Dense)             (None, 1)                 11        
+                                                                 
+=================================================================
+Total params: 705,951
+Trainable params: 705,951
 Non-trainable params: 0
+_________________________________________________________________
 
 
+## Take Aways
+One of the first learnings in this project was that processing speed with large datasets, increasing the number of Epochs significantly increases the processing times increased from 1-2 minutes to nearly 20 minutes to execute
 
+The neural network model was not able to reach a target of 75% accuracy which from class and reading, this is a nominal level target.  With that said, the model was able to reach between 71-73% accuracy as manipulations were made to epochs, number of hidden layers, methods- sigmoid,tanh, relu.  
 
-To speed up the training process, we are using the activation function ReLU for the hidden layers. As our output is a binary classification, Sigmoid is used on the output layer.
-For the compilation, the optimizer is adam and the loss function is binary_crossentropy.
-The model accuracy is under 75%. This is not a satisfying performance to help predict the outcome of the charity donations.
-To increase the performance of the model, we applied bucketing to the feature ASK_AMT and organized the different values by intervals.
-We increased the number of neurons on one of the hidden layers, then we used a model with three hidden layers.
-We also tried a different activation function (tanh) but none of these steps helped improve the model's performance.
-Summary
-The deep learning neural network model did not reach the target of 75% accuracy. Considering that this target level is pretty average we could say that the model is not outperforming.
-Since we are in a binary classification situation, we could use a supervised machine learning model such as the Random Forest Classifier to combine a multitude of decision trees to generate a classified output and evaluate its performance against our deep learning model.
+An interesting point is that running the optimized model with tan instead of sigmoid and then rerunning with 
+
+Nexts steps could include additional investigation to determine the existance of imbalance within the dataset and within which factors. As this is a rather large database, the use of hypertuning, suffling, among other techniques may be worth considering.  Also, as the focus was on neural, it would be worth running under different model types to see if we can learn additional information.
+
