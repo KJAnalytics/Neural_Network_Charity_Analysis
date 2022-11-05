@@ -79,9 +79,7 @@ _________________________________________________________________
 ## Take Aways
 One of the first learnings in this project was that processing speed with large datasets, increasing the number of Epochs significantly increases the processing times increased from 1-2 minutes to nearly 20 minutes to execute
 
-The neural network model was not able to reach a target of 75% accuracy which from class and reading, this is a nominal level target.  With that said, the model was able to reach between 71-73% accuracy as manipulations were made to epochs, number of hidden layers, methods- sigmoid,tanh, relu.  
-
-An interesting point is that running the optimized model with tan instead of sigmoid and then rerunning with 
+The neural network model was not able to reach a target of 75% accuracy which from class and reading, this is a nominal level target.  With that said, the model was able to reach between 71-73% accuracy as manipulations were made to epochs, number of hidden layers, methods- sigmoid,tanh, relu.   
 
 Nexts steps could include additional investigation to determine the existance of imbalance within the dataset and within which factors. As this is a rather large database, the use of hypertuning, suffling, among other techniques may be worth considering.  Also, as the focus was on neural, it would be worth running under different model types to see if we can learn additional information.
 
